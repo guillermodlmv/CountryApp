@@ -1,0 +1,48 @@
+.nav{
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 98.65%;
+    height: 60px;
+    padding-left: 10px;
+    padding-right: 16px;
+    background-color: #142d4c;
+    color:white;
+    border-bottom: 1px solid rgb(56, 50, 65);
+}
+.navImg{
+    height: 40px;
+}
+.navTitle{
+    display: flex;
+    margin-left: 2%;
+    font-size:16px;
+    color: white;
+}
+.navOptions{
+    display: flex;
+    width: 70%;
+    font-size: 20px;
+    justify-content:flex-start;
+    padding-left: 50px;
+}
+.option{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 0px 16px;
+    height: 50px;
+    color:white;
+}
+.option:hover {
+    font-size: 21px;
+}
+.textAndLogo{
+    display: flex;
+    align-items: center;
+    width: 40%;
+}
+

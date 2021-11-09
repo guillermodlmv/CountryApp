@@ -1,0 +1,29 @@
+.divBar{
+    display:flex;
+    justify-content: center;
+    padding: 10px;
+}
+::placeholder{
+    color:black;
+}
+.input{
+    background-color: white; 
+    color: black;
+    font-size: 13px;
+    border-radius:5px;
+    width: 300px;
+    height: 25px;
+}
+.add{
+    background-color:#233142;
+    color: white;
+    width: 60px;
+    height: 31.5px;
+    border-radius:5px;
+    margin: 0 1px 0 1px;
+    cursor:pointer;
+}
+.add:hover{
+    background-color:white;
+    color:black;
+}

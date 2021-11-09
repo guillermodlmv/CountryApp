@@ -1,0 +1,9 @@
+.filters{
+    display:flex;
+    height:85vh;
+    width:99.8%;
+}
+.home{
+    width:100%;
+    background-color: #79c2d0;
+}

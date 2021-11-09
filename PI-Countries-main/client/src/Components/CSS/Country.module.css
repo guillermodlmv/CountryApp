@@ -1,0 +1,17 @@
+.country{
+    display:flex;
+    width:100%;
+    font-size: 15px;
+    background-color: #38598b; 
+    color:white;
+    height:7vh;
+    justify-content: space-around;
+    align-items: center;
+    border: #142d4c 2px solid;
+}
+
+.flag{
+    width: 90px;
+    height: 40px;
+    
+}
