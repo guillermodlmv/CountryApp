@@ -1,25 +1,32 @@
-const {Activity, Country} = require('../db')
-const ModelCrud = require('./index')
+const {Activity, Country} = require('../db.js')
 const { Op } = require('sequelize');
-//const axios = require('axios')
 
 module.exports = {
-    addActivity : (req, res) => {
-        const {name, difficulty, duration, season } = req.body;
-        await Activity.create({
-            where: { 
+
+    addActivity : async (req, res) => {
+        const {name, difficulty, duration, season, countryName } = req.body;
+        
+        const newActivity = await Activity.create({ 
             name,
             difficulty,
             duration,
             season,
-            }
-        })
-        const modelCountry = await Country.findAll({
-            where : {
-                name:{
-                    [Op.in]: Array.isArray(country) ? country : [country]
+        });
+
+        const country = await Country.findAll({
+            where: { 
+                name: {
+                    [Op.in]: Array.isArray(countryName) ? countryName : [countryName]
                 }
             }
+        });
+        await newActivity.setCountries(country);
+        res.send(newActivity)
+    },
+    getAll : async(req, res) =>{
+        let allActivities = await Activity.findAll({
+            include: [{model: Country}]
         })
+        res.send(allActivities)
     }
 }

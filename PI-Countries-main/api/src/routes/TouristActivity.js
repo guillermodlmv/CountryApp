@@ -1,6 +1,8 @@
-const { Country, Activity, Tourism } = require('../db.js')
-const router = require('express').Router();
+const activityFunctions= require("../functions/TouristActivity.js");
+const { Router } = require("express");
+const router = Router();
 
-
+router.post('/', activityFunctions.addActivity)
+router.get('/', activityFunctions.getAll)
 
 module.exports= router;
