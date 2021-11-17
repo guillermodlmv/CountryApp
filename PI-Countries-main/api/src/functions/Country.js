@@ -31,7 +31,13 @@ module.exports = {
                 Country.findOrCreate({where: data})
                 .catch(error => error)
             }))
-            
+            await Country.findAll({
+                include: [{
+                    model: Activity
+                }],
+                limit:250
+            })
+            .then(results => res.send(results))   
         } 
         catch (e) {
             console.error(e)
