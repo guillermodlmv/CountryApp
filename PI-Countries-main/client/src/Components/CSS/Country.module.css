@@ -1,17 +1,20 @@
 .country{
     display:flex;
-    width:100%;
+    margin-top:2px;
+    margin-bottom:2px;
+    margin-left:5px;
+    width:99.5%;
     font-size: 15px;
     background-color: #38598b; 
     color:white;
-    height:7vh;
+    height:8vh;
     justify-content: space-around;
     align-items: center;
     border: #142d4c 2px solid;
+    cursor:url("https://img.icons8.com/color/35/000000/airplane-take-off--v2.png"), auto;
 }
 
 .flag{
     width: 90px;
-    height: 40px;
-    
+    height: 40px;  
 }

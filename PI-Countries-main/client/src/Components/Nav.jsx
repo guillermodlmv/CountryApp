@@ -10,7 +10,7 @@ export default function Nav(){
             <div className={style.textAndLogo}>
                 <Link to={'/'} style={{ textDecoration: 'none' }}>
                     <div className={style.navTitle}>
-                        <img className={style.navImg} src={world}/>
+                        <img className={style.navImg} src={world} alt='img'/>
                         <span>Travel App</span>
                         
                     </div>

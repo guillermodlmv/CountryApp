@@ -2,6 +2,7 @@
     height: 100vh;
     background-color:   #385170;
     display:flex;
+    cursor:url("https://img.icons8.com/plasticine/50/4a90e2/fighter-jet.png"), auto;
 }
 
 .Button{
@@ -10,7 +11,7 @@
     width: 100%;
     height:130px;
     font-size:40px;
-    cursor:pointer;
+    cursor:url("https://img.icons8.com/color/50/000000/airplane-take-off--v2.png"), auto;
     border-radius: 30px;
 }
 .Button:hover{

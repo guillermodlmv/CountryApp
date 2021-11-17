@@ -1,22 +1,35 @@
-import React from 'react';
+import React, { useEffect} from 'react';
+import { connect } from 'react-redux';
 import style from './CSS/Home.module.css';
-import TableBar from './TableBar';
 import Countries from './Countries.jsx';
 import Filter from './Filter.jsx';
-export default function Home({filter, onClose, onSearch, onSort, onClick,filterState}){
+import  { filters, getCountryNames} from '../actions/actions.js'
+
+export function Home(props){
     
+    useEffect(() => {
+        props.filters([ 1], [ 'Summer'])
+    },)
+    useEffect(() => {
+        props.getCountryNames()
+    },)
+
+
     return(
         <div className={style.home}>
-            <TableBar 
-            onClose={onClose} 
-            onSearch={onSearch} 
-            filter={filter}
-            filterState={filterState}
-            />
             <div className={style.filters}>
-                <Filter onClick={onClick} filterState={filterState}  />
-                <Countries filterState={filterState} />
+                <Filter onClick={props.onClick} filterState={props.filterState}  />
+                <Countries filterState={props.filterState} />
             </div>
         </div>
     );
 };
+
+function mapDispatchToProps(dispatch) {
+    return{
+        filters: (difficulty, season) => dispatch(filters(difficulty, season)),
+        getCountryNames: () => dispatch(getCountryNames())
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Home)

@@ -1,0 +1,38 @@
+.div{
+    display:flex;
+    height:93.5vh;
+    width:99.8%;
+    justify-content:center;
+}
+
+.form{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+.subDiv{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size:22px;
+    margin:10px;
+}
+
+.inputClass{
+    background-color: white; 
+    color: black;
+    font-size: 13px;
+    border-radius:5px;
+    width: 270px;
+    height: 25px;
+}
+.btn{
+    background-color:#233142;
+    color: white;
+    width: 285px;
+    height: 40px;
+    border-radius:5px;
+    cursor:pointer;
+    margin:10px;
+    cursor:url("https://img.icons8.com/color/50/000000/airplane-take-off--v2.png"), auto;
+}

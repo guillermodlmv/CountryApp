@@ -1,11 +1,18 @@
-
-.noCountrie{
+.CountryDetail{
     display: flex;
     flex-direction: column;
     text-align: center;
     width: 100%;
     font-size: 20px;
     margin-left: 2px;
-    height: 10vh;
+    height: 92vh;
     cursor:url("https://img.icons8.com/plasticine/40/4a90e2/fighter-jet.png"), auto;
+}
+.bar{
+    display:flex;
+    justify-content: space-around;
+}
+.activities{
+    display:flex;
+    justify-content: space-around;
 }

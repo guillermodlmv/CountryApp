@@ -1,16 +1,16 @@
 .div{
-    width: 10%;
+    width: 210px;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-left:-11px;
-
+    margin-left:-3.5px;
 }
 .filter{
+    padding-top:30%;
     width:100%;
     background-color:#005792;
-    height:96%;
+    height:100%;
     margin-left: 2%;
     margin-right: 2%;
     display:flex;
@@ -18,119 +18,32 @@
     border-radius:0 0 0 10px;
     align-items: center;
     color:white;
+    cursor:auto;
 }
-.allFilters{
-    display: flex;
+
+.form{
+    display:flex;
     flex-direction: column;
-    width: 100%;
-    justify-content: center;
-}
-.title{
-    font-size: 24px;
-    margin-bottom:6px;
-    font-weight: bold;
-    width:80%;
-    margin-left: 10%;
-    margin-right: 10%;
+    height: 100px;
+
 }
 .subTitle{
     font-size:20px;
     margin:8px;
     font-weight: 650;
 }
-.filterText{
-    font-size:14px;
-    margin:6px;
-    font-weight: 500;
-}
-.form{
-    display: flex;
-    flex-direction: column;
-    font-size: 12px;
-    justify-content: center;
-    margin-bottom:3%;
-}
-.regionForm{
-
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    text-align: center;
-    justify-content: center;
-    margin-top: 10%;
-    margin-left: 10%;
-    align-items:flex-start;
-    cursor: pointer;
-}
 
 .filterBtn{
-    width:80%;
+    background-color:#233142;
+    color: white;
+    width: 80%;
+    height: 31.5px;
+    border-radius:5px;
+    margin: 0 1px 0 1px;
     cursor:pointer;
+    cursor:url("https://img.icons8.com/color/50/000000/airplane-take-off--v2.png"), auto;
 }
-.seasonDiv{
-    margin:10%;
-}
-.dificulty{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-}
-.season{
-    flex-wrap: wrap;
-    display: flex;
-    width:100%;
-
-}
-.population{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 4%;
-    margin-bottom: 5%;
-}
-.hide{
-    display: none;
-}
-.filterBtn{
-    margin-left: 80px;
-    margin-top: -22px;
-    width:20px;
-    height: 20px;
-    background-color:none;
-    display:flex;
-    justify-content: center;
-    overflow: hidden;
-    outline: none;
-    background-color: white;
-    border-color: none;
-}
-.filterBtn3{
-    margin-left: 80px;
-    margin-top: -22px;
-    width:20px;
-    height: 20px;
-    background-color:none;
-    display:flex;
-    justify-content: center;
-    overflow: hidden;
-    outline: none;
-    background-color: white;
-    border-color: none;
-}
-.filterBtn2{
-    margin-left: 8%;
-    width:60px;
-    height: 20px;
-    background-color:none;
-    display:flex;
-    justify-content: center;
-    overflow: hidden;
-    outline: none;
-    background-color: white;
-    border-color: none;
-}
-.btnImg{
-    width: 15px;
-    
+.filterBtn:hover{
+    background-color:white;
+    color:#233142;
 }

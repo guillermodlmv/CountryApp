@@ -2,6 +2,7 @@ import React from 'react';
 import style from './CSS/Landing.module.css';
 import { Link } from 'react-router-dom';
 import travel from '../img/Travel.gif';
+
 export default function Landing(){
     return(
         <div className={style.landing}>
