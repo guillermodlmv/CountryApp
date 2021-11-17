@@ -12,15 +12,19 @@ module.exports = {
             duration,
             season,
         });
-
-        const country = await Country.findAll({
-            where: { 
-                name: {
-                    [Op.in]: Array.isArray(countryName) ? countryName : [countryName]
-                }
-            }
-        });
-        await newActivity.setCountries(country);
+        let countriesName = countryName
+        if(typeof countryName === 'string'){
+            countriesName = countryName.split(',');
+        }
+                const country = await Country.findAll({
+                    where: { 
+                        name: {
+                            
+                            [Op.in]: Array.isArray(countriesName) ? countriesName : [countriesName]
+                        }
+                    }
+                });
+                await newActivity.setCountries(country);
         res.send(newActivity)
     },
     getAll : async(req, res) =>{
