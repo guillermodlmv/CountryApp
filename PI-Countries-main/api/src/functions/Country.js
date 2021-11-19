@@ -22,7 +22,7 @@ module.exports = {
                         id: cca3,
                         name: name.common,
                         imgFlag: flags.png,
-                        continent: continents[0],
+                        continent: continents[0].split(' ').length >1 ? continents[0].split(' ')[1]: continents[0],
                         capital: capital ? capital[0] : 'No Capital Found',
                         subRegion: subregion ? subregion : 'No Subregion Found',
                         area: Math.round(area),
@@ -66,4 +66,3 @@ module.exports = {
         .then(results => res.send(results))
     },
 }
-
