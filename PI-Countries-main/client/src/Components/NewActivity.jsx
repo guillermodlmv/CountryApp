@@ -1,7 +1,14 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import style from './CSS/NewActivity.module.css';
+import { connect } from 'react-redux';
+import  { getCountryNames} from '../actions/actions.js'
 const { div, form, subDiv, inputClass, btn } = style;
-export default function newActivity() {
+export function NewActivity(props) {
+    console.log(props.names)
+    
+    useEffect(() =>  {
+        props.getCountryNames()
+    },[])
     
     return (
         <div className={div}  >
@@ -25,18 +32,36 @@ export default function newActivity() {
                     <input className={inputClass} type="text" />
                 </div>
                 <div className={subDiv}>
-                    <label for="name">Activity Season:</label>
+                    <label for="season">Activity Season:</label>
                     <input className={inputClass} type="text" />
                 </div>
                 <div>
-                    <select>
-                    { 
-                        
-                    }
-                    </select>
+                    <div className={subDiv}>
+                        <label for="name">Select Countries:</label>
+                        <div>
+                            <select>
+                            {props.names.map(e => {
+                                return (
+                                    <option>{e }                     
+                                    </option>
+                                )
+                            })
+                                
+                            }
+                            </select>
+                            <button>+</button>
+                        </div>
+                    </div>
                 </div>
                 <input className={btn} type="button" value="Add Activity" />
             </form>
         </div>
     );
 };
+function mapStateToProps(state) {
+    return{
+        names:state.countriesNames
+    }
+}
+
+export default connect(mapStateToProps, {getCountryNames})(NewActivity)

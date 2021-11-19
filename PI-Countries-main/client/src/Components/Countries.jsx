@@ -1,25 +1,25 @@
-import React from 'react';
-// import { connect } from 'react-redux';
+import React, {useState} from 'react';
 import style from './CSS/Countries.module.css';
-// import { Link } from 'react-router-dom';
 import Country from './Country.jsx';
-import TableBar from './TableBar.jsx';
-export default function Countries(){
-    let countries= []
-    // [{name:'Mexico', flag:"https://flagcdn.com/w320/mx.png", continent:'America', code:"MEX" },{name:'Mexico', flag:"https://flagcdn.com/w320/mx.png", continent:'America', code:"MEX" },,{name:'Mexico', flag:"https://flagcdn.com/w320/mx.png", continent:'America', code:"MEX" },,{name:'Mexico', flag:"https://flagcdn.com/w320/mx.png", continent:'America', code:"MEX" },,{name:'Mexico', flag:"https://flagcdn.com/w320/mx.png", continent:'America', code:"MEX" },,{name:'Mexico', flag:"https://flagcdn.com/w320/mx.png", continent:'America', code:"MEX" },,{name:'Mexico', flag:"https://flagcdn.com/w320/mx.png", continent:'America', code:"MEX" },,{name:'Mexico', flag:"https://flagcdn.com/w320/mx.png", continent:'America', code:"MEX" },,{name:'Mexico', flag:"https://flagcdn.com/w320/mx.png", continent:'America', code:"MEX" }]
-    if(countries){
+import left from '../img/left.png';
+import right from '../img/Right.png';
+export default function Countries({data, onNext, onAfter, page}){
+    // console.log(props.countries[0][0])
+
+    if(data){
         return(
             <div className={style.noCountrie} >
-                <TableBar/>
-                {countries.map( countrie => 
-                    <Country
-                    Name= { countrie.name }
-                    Flag= { countrie.flag }
-                    Continent= { countrie.continent }
-                    Code= { countrie.code }
-                    /> 
-                )
-                }
+                <Country page={page} data={data}/>
+                <div className={style.btnDiv}>
+                    <button className={page === 0 ? style.btnHide : style.btn} onClick={onAfter}>
+                        <img  className={page === 0 ? style.btnHide :style.imgBtn} src={left} alt='left'/>
+                    </button>
+                        <h4>Page {page +1}</h4>
+                    <button className={page < Math.floor(data.length / 9) ?style.btn  :style.btnHide} onClick={onNext}>
+                        <img className={page < Math.floor(data.length / 9) ? style.imgBtn:style.btnHide } src={right} alt='left'/>
+                    </button>
+                </div>
+                
             </div>
         )
     } else{

@@ -5,7 +5,7 @@
     width: 100%;
     font-size: 20px;
     margin-left: 2px;
-    height: 92vh;
+    height: 100vh;
     cursor:url("https://img.icons8.com/plasticine/40/4a90e2/fighter-jet.png"), auto;
 }
 .bar{
@@ -15,4 +15,27 @@
 .activities{
     display:flex;
     justify-content: space-around;
+    margin-left:1%;
+    height:50vh;
+    background-color:white;
+    width: 70%;
+
+}
+.activitiesDiv{
+    display:flex;
+    flex-direction: column;
+    background-color:white;
+    height:50vh;
+    width: 70%;
+}
+.spanText{
+    width:150px;
+    font-size: 21px;
+    height:40px;
+}
+.div{
+    
+}
+.subDiv{
+    height:10vh;
 }

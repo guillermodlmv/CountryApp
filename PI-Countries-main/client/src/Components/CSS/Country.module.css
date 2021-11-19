@@ -7,7 +7,7 @@
     font-size: 15px;
     background-color: #38598b; 
     color:white;
-    height:8vh;
+    height:7vh;
     justify-content: space-around;
     align-items: center;
     border: #142d4c 2px solid;
@@ -15,6 +15,16 @@
 }
 
 .flag{
-    width: 90px;
+    width: 60px;
     height: 40px;  
+}
+.subDiv{
+    height: 100%;
+    width: 33%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.btnDiv{
+    display: flex;
 }

@@ -12,9 +12,7 @@ export default function TableBar(){
                     <p>Country flag</p>
                 </div>
                 <div className={style.divOrder}>
-                    <button className={style.btn}>
-                        <p>Name ↕</p>
-                    </button>
+                    <p>Country name</p>
                 </div>
                 <div className={style.divOrder}>
                     <p>Contentinent</p>

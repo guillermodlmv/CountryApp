@@ -2,10 +2,29 @@
 .noCountrie{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     text-align: center;
-    width: 100%;
+    width: 99.7%;
     font-size: 20px;
     margin-left: 2px;
-    height: 10vh;
+    height: 100%;
     cursor:url("https://img.icons8.com/plasticine/40/4a90e2/fighter-jet.png"), auto;
+}
+.btn{
+    background-color: Transparent;
+    border: none;
+    width:100px;
+    cursor:url("https://img.icons8.com/color/35/000000/airplane-take-off--v2.png"), auto;
+}
+.imgBtn{
+    width: 50px;
+}
+
+.btnHide{
+    
+    display: none;
+}
+.btnDiv{
+    display: flex;
+    justify-content: center;
 }

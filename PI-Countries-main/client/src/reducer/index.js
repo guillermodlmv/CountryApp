@@ -1,5 +1,5 @@
 import {GET_COUNTRIES_NAMES, GET_DB, GET_TEN_COUNTRIES, GET_NINE_COUNTRIES, GET_BY_NAME, GET_ALL, GET_BY_ID, GET_ALL_ACTIVITIES, FILTER} from '../Const/Const';
-const initialState ={
+export const initialState ={
     getDB : [],
     getTenCountries: [],
     getNineCountries: [],

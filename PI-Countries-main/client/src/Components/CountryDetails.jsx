@@ -1,54 +1,76 @@
-import React, { useEffect} from 'react';
+import React, { useEffect, useState} from 'react';
 import { connect } from 'react-redux';
 import style from './CSS/CountryDetails.module.css';
-import  {  getCountryNames} from '../actions/actions.js'
+import  { getById } from '../actions/actions.js'
 // import { Link } from 'react-router-dom';
-const {bar, CountryDetail, activities } = style
+const {bar, CountryDetail, activities, activitiesDiv, spanText,div, subDiv } = style
 
 export function CountryDetails(props){
+    // console.log(({match}) => ())
+    let actualId = window.location.pathname.slice(9)
     useEffect(() => {
-        props.getCountryNames()
+        props.getById(actualId)
     },[])
-    console.log(props.getCountryNames())
+    
     return(     
 
             <div className={ CountryDetail} >
                 
-                <img src={''} alt='Here is the Flag' />
-                <h1>Here is the name(HERE IS CODE)</h1>
-                <h2>Continent: Here is the Continent</h2>
-                <h3>Capital: Here is the Capital</h3>
-                <h3>Subregion: Here is the Subregion</h3>
-                <h3>Area: Here is the Area KM2</h3>
-                <h3>Population: Here is the Population KM2</h3>
-                <div>
-                    <h2>Activities</h2>
-                    <div className={bar}>
-                        <p>Name</p>
-                        <p>Difficulty</p>
-                        <p>Duration</p>
-                        <p>Season</p>
+                {props.byId.getById.map(e => {
+                    return(
+                <div className={ div}>
+                    <div className={ subDiv}>
+                        <img src={e.imgFlag} alt='Here is the Flag' />
+                        <h1>{e.name}</h1>
+                        <h2>Continent: {e.continent}</h2>
+                        <h3>Capital: {e.capital}</h3>
+                        <h3>Subregion: {e.subRegion}</h3>
+                        <h3>Area: {e.area} KM2</h3>
+                        <h3>Population: {e.population} habitants</h3>
+                        <div>
+                    </div>    
+                        <h2>Activities</h2>
+                        <div className={activitiesDiv}>
+                            <div className={bar}>
+                                <span className={spanText}>Activity Name</span>
+                                <span className={spanText} >Difficulty</span>
+                                <span className={spanText}>Duration</span>
+                                <span className={spanText}>Season</span>
+                                
+                            </div>
+                                {e.activities.map(e =>{
+                                    return(
+                                        <div className={activities}>
+                                            <span className={spanText}>{e.name}</span>
+                                            <span className={spanText}>{e.difficulty}</span>
+                                            <span className={spanText}>{e.duration}</span>
+                                            <span className={spanText}>{e.season}</span>                       
+                                        </div>  
+                                    )
+                                })}
+                        </div>     
+                            
                     </div>
-                    <div className={activities}>
-                        <p>HERE IS THE Name</p>
-                        <p>HERE IS THE Difficulty</p>
-                        <p>HERE IS THE Duration</p>
-                        <p>HERE IS THE Season</p>
-                    </div>
-                </div>
+                </div> 
+                    )
+                
+                })
+                /* <img src={props.state[0].imgFlag} alt='Here is the Flag' />
+                <h1>{props.state[0].name}</h1>
+                <h2>Continent: {props.state[0].continent}</h2>
+                <h3>Capital: {props.state[0].capital}</h3> */}
+                
+                
             </div>
     );
 };
 
-function mapDispatchToProps(dispatch) {
-    return{
-        getCountryNames: payload => dispatch(getCountryNames(payload))
-    }
-}
+
 function mapStateToProps(state) {
+    // console.log(state)
     return {
-        names: state
+        byId: state
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CountryDetails)
+export default connect(mapStateToProps, {getById})(CountryDetails)
