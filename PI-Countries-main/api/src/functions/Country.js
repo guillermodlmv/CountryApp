@@ -43,6 +43,18 @@ module.exports = {
             console.error(e)
         }
     },
+    getByName : async (req, res) => {
+        if(req.query.name){
+            return await Country.findAll({
+                include: [{ 
+                    model: Activity,
+                }],
+                where: { name: { [Sequelize.Op.iLike]: `%${req.query.name}%` }}
+            })
+            .then(country => country.length? res.send(country): res.status(404).send('Country does not exist'))
+            .catch(error=>{error});
+        }
+    },
 
     getById: async (req, res, next) => {
         const id = req.params.id;
@@ -57,12 +69,24 @@ module.exports = {
     },
 
     showAll : async(req, res) =>{
-        return await Country.findAll({
+        if(req.query.name){
+            return await Country.findAll({
+                include: [{ 
+                    model: Activity,
+                }],
+                where: { name: { [Sequelize.Op.iLike]: `%${req.query.name}%` }}
+            })
+            .then(country => country.length? res.send(country): res.send([]))
+            .catch(error=>{error});
+        }else{
+            return await Country.findAll({
+            
             include: [{
                 model: Activity
             }],
             limit:250
         })
         .then(results => res.send(results))
+        }
     },
 }
