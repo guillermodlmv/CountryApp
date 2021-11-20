@@ -14,6 +14,7 @@
     cursor:url("https://img.icons8.com/color/50/000000/airplane-take-off--v2.png"), auto;
     border-radius: 30px;
 }
+
 .Button:hover{
     background: #67B26F;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #4ca2cd, #67B26F);  /* Chrome 10-25, Safari 5.1-6 */
@@ -22,13 +23,7 @@
     font-weight: bold;
     width: 103%;
 }
-.picture{
-    width: 40%;
-    height: 80%;
-    padding: 2%;
-    margin: 2%;
-    border-radius: 80px; 
-}
+
 .buttonAndTitle{
     margin: 2%;
     padding: 2%;
@@ -38,39 +33,57 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
 .One, .Two, .Three{
     color:  #ececec; 
     font-size:60px;
     margin: -1%;
 }
 
-.Title{
-    margin-top: 15%;
-}
 .One{
     padding-left:10%;
     display:flex;
     justify-content: flex-start;
 }
+
 .One:hover{
     font-size: 75px;
     color:#93e4c1; 
 }
+
+.picture{
+    width: 40%;
+    height: 80%;
+    padding: 2%;
+    margin: 2%;
+    border-radius: 80px; 
+}
+
 .Two{
     justify-content: center;
     display:flex;
 }
+
 .Two:hover{
     font-size: 75px;
     color:  #00b7c2; 
 }
+
 .Three{
     padding-right:10%;
     display:flex;
     justify-content: flex-end;
 }
+
 .Three:hover{
     font-size: 75px;
     color: #dbf094; 
 
 }
+
+.Title{
+    margin-top: 15%;
+}
+
+
+

@@ -167,3 +167,10 @@ export const searchName = (state) => {
             dispatch({type: SEARCH_STATE, payload: [state] })
     }
 }
+
+export const createActivity = (details) => {
+    return async function(dispatch){
+        const newActivity = await axios.post('http://localhost:3001/activities', details)
+        console.log(newActivity)
+    }
+}

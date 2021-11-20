@@ -9,12 +9,9 @@ import CountryDetails from'./Components/CountryDetails.jsx'
 // import style from './App.css';
 // import Filter from './Components/Filter.jsx'
 
-function App(props) {
-
-  
+function App() {
   return (
     <div className="App">
-      {/* <Route path='/' render ={()=> <Nav />}/> */}
       <Route exact path='/' render ={()=> <Landing />}/>
       <Route exact path='/home' render ={()=> <><Nav /><Home   /></>}/>
       <Route exact path='/NewActivity' render ={()=> <><Nav /><NewActivity /></>}/>

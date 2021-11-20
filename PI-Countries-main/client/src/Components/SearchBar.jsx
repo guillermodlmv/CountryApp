@@ -26,9 +26,7 @@ export  function SearchBar(props){
                 type="text"
                 placeholder=" Insert Country Name"
                 value={country}
-                onChange={e => {
-                    setCountry(e.target.value)
-                }}
+                onChange={e => {setCountry(e.target.value)}}
                 className={style.input}
             />
         </form>

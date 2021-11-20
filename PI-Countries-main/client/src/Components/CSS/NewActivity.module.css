@@ -1,3 +1,47 @@
+.btn{
+    background-color:#233142;
+    color: white;
+    width: 285px;
+    height: 40px;
+    border-radius:5px;
+    cursor:pointer;
+    margin:10px;
+    cursor:url("https://img.icons8.com/color/50/000000/airplane-take-off--v2.png"), auto;
+}
+
+.btnAdd{
+    height:32px;
+    background-color:#233142;
+    color:white;
+    cursor:pointer;
+}
+
+.countriesDiv{
+    margin-top:10px;
+    display:flex;
+    background-color: white;
+    font-size:10px;
+    width:400px;
+    height:200px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+.countryBtn{
+    width:25%;
+    height:20%;
+    white-space: normal;
+    font-size:11.5px;
+    border-radius:5px;
+    background-color:#2b4353;
+    color: white;
+    cursor:pointer;
+    font-weight: 700;
+}
+.countryBtn:hover{
+    background-color:#f95959;
+    color:black
+}
 .div{
     display:flex;
     height:93.5vh;
@@ -10,14 +54,6 @@
     flex-direction: column;
     align-items:center;
 }
-.subDiv{
-    display:flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-size:22px;
-    margin:10px;
-    
-}
 
 .inputClass{
     background-color: white; 
@@ -27,37 +63,27 @@
     width: 270px;
     height: 25px;
 }
-.btn{
-    background-color:#233142;
-    color: white;
-    width: 285px;
-    height: 40px;
-    border-radius:5px;
-    cursor:pointer;
-    margin:10px;
-    cursor:url("https://img.icons8.com/color/50/000000/airplane-take-off--v2.png"), auto;
-}
+
 .inputClass2{
     height:32px;
     width:280px;
     border-radius:5px;
 }
+
 .inputClass3{
     height:32px;
     width:256px;
     border: black 1.5px solid;
     border-radius:5px;
 }
-.btnAdd{
-    height:32px;
-    background-color:#233142;
-    color:white;
-    cursor:pointer;
+
+.subDiv{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size:22px;
+    margin:10px;
 }
-.countriesDiv{
-    margin-top:10px;
-    background-color: white;
-    font-size:10px;
-    width:280px;
-    height:150px;
-}
+
+
+

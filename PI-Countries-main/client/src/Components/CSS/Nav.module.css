@@ -13,15 +13,18 @@
     border-bottom: 1px solid rgb(56, 50, 65);
     cursor:url("https://img.icons8.com/plasticine/40/4a90e2/fighter-jet.png"), auto;
 }
+
 .navImg{
     height: 40px;
 }
+
 .navTitle{
     display: flex;
     margin-left: 2%;
     font-size:16px;
     color: white;
 }
+
 .navOptions{
     display: flex;
     width: 70%;
@@ -29,6 +32,7 @@
     justify-content:flex-start;
     padding-left: 50px;
 }
+
 .option{
     display: flex;
     align-items: center;
@@ -38,9 +42,11 @@
     height: 50px;
     color:white;
 }
+
 .option:hover {
     font-size: 21px;
 }
+
 .textAndLogo{
     display: flex;
     align-items: center;
