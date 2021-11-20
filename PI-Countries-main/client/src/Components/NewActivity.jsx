@@ -2,13 +2,13 @@ import React, {useState, useEffect} from 'react';
 import style from './CSS/NewActivity.module.css';
 import { connect } from 'react-redux';
 import  { getCountryNames} from '../actions/actions.js'
-const { div, form, subDiv, inputClass, btn } = style;
+const { div, form, subDiv, inputClass, btn, inputClass2, inputClass3, btnAdd, countriesDiv } = style;
 export function NewActivity(props) {
-    console.log(props.names)
     
     useEffect(() =>  {
         props.getCountryNames()
     },[])
+
     
     return (
         <div className={div}  >
@@ -19,7 +19,7 @@ export function NewActivity(props) {
                 </div>
                 <div className={subDiv}>
                     <label for="difficulty">Difficulty: </label>
-                    <select className={inputClass} name="difficulty">
+                    <select className={inputClass2} name="difficulty">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -29,17 +29,22 @@ export function NewActivity(props) {
                 </div>
                 <div className={subDiv}>
                     <label for="duration">Activity Duration:</label>
-                    <input className={inputClass} type="text" />
+                    <input className={inputClass} type="number" />
                 </div>
                 <div className={subDiv}>
-                    <label for="season">Activity Season:</label>
-                    <input className={inputClass} type="text" />
+                <label for="season">Season: </label>
+                    <select className={inputClass2} name="season">
+                        <option>Summer</option>
+                        <option>Autumn</option>
+                        <option>Winter</option>
+                        <option>Spring</option>
+                    </select>
                 </div>
                 <div>
                     <div className={subDiv}>
                         <label for="name">Select Countries:</label>
                         <div>
-                            <select>
+                            <select className={inputClass3}>
                             {props.names.map(e => {
                                 return (
                                     <option>{e }                     
@@ -49,8 +54,9 @@ export function NewActivity(props) {
                                 
                             }
                             </select>
-                            <button>+</button>
+                            <button className={btnAdd}>+</button>
                         </div>
+                        <div className={countriesDiv}>AQUI SE AGREGA</div>
                     </div>
                 </div>
                 <input className={btn} type="button" value="Add Activity" />
@@ -60,7 +66,7 @@ export function NewActivity(props) {
 };
 function mapStateToProps(state) {
     return{
-        names:state.countriesNames
+        names:state.countriesNames,
     }
 }
 

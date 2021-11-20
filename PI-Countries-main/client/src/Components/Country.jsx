@@ -6,7 +6,7 @@ import  { filters, getCountryNames} from '../actions/actions.js'
 export default function Country(props){
     // console.log(Math.ceil(props.data.length/9))
     // console.log(props.data)
-
+    
     const a = props.page;
     return(
         <div>

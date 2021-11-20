@@ -162,6 +162,16 @@ export default function Filter({onSort, onSortByPopulation, handleChangeD, handl
                             />
                             <span>Oceania</span>
                         </div>
+                        <div>
+                            <input 
+                            type= "checkbox"
+                            value='Oceania'
+                            name="difficulty" 
+                            style={{cursor:"pointer"}}
+                            onChange={()=> handleChangeC("Antarctica")}
+                            />
+                            <span>Antarctica</span>
+                        </div>
                     </form>
                 </div>
                 <button onClick={onSort} className={filterBtn}>Sort By Name (A-Z)</button>

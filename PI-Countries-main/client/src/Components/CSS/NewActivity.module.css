@@ -16,6 +16,7 @@
     justify-content: space-between;
     font-size:22px;
     margin:10px;
+    
 }
 
 .inputClass{
@@ -35,4 +36,28 @@
     cursor:pointer;
     margin:10px;
     cursor:url("https://img.icons8.com/color/50/000000/airplane-take-off--v2.png"), auto;
+}
+.inputClass2{
+    height:32px;
+    width:280px;
+    border-radius:5px;
+}
+.inputClass3{
+    height:32px;
+    width:256px;
+    border: black 1.5px solid;
+    border-radius:5px;
+}
+.btnAdd{
+    height:32px;
+    background-color:#233142;
+    color:white;
+    cursor:pointer;
+}
+.countriesDiv{
+    margin-top:10px;
+    background-color: white;
+    font-size:10px;
+    width:280px;
+    height:150px;
 }

@@ -1,41 +1,55 @@
+.activities{
+    display:flex;
+    justify-content: space-around;
+    height:100%;
+    background-color:#eaf6f6;
+    color:black;
+    width: 100%;
+    
+}
+
+.activitiesDiv{
+    display:flex;
+    flex-direction: column;
+    background-color:#2b4353;
+    color:white;
+    height:90%;
+    width: 95%;
+    margin-left:45px;
+    margin-bottom: 2%;
+}
+
+.bar{
+    display:flex;
+    justify-content: space-around;
+    background-color:#2b4353;
+    color:white;
+}
+
 .CountryDetail{
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 100%;
+    justify-content: center;
+    width: 99.9%;
     font-size: 20px;
     margin-left: 2px;
-    height: 100vh;
+    height: 100%;
     cursor:url("https://img.icons8.com/plasticine/40/4a90e2/fighter-jet.png"), auto;
+    margin-top: 1%;
 }
-.bar{
-    display:flex;
-    justify-content: space-around;
-}
-.activities{
-    display:flex;
-    justify-content: space-around;
-    margin-left:1%;
-    height:50vh;
-    background-color:white;
-    width: 70%;
 
+.dataDiv{
+    margin-top:2%;
 }
-.activitiesDiv{
-    display:flex;
-    flex-direction: column;
-    background-color:white;
-    height:50vh;
-    width: 70%;
-}
+
 .spanText{
-    width:150px;
-    font-size: 21px;
+    width:25%;
+    font-size: 30px;
     height:40px;
+    border: #455d7a 2px outset;
 }
-.div{
-    
-}
+
 .subDiv{
     height:10vh;
 }

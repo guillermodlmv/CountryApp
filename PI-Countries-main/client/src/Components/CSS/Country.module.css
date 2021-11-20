@@ -1,3 +1,7 @@
+.btnDiv{
+    display: flex;
+}
+
 .country{
     display:flex;
     margin-top:2px;
@@ -18,13 +22,11 @@
     width: 60px;
     height: 40px;  
 }
+
 .subDiv{
     height: 100%;
     width: 33%;
     display:flex;
     justify-content:center;
     align-items:center;
-}
-.btnDiv{
-    display: flex;
 }

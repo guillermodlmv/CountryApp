@@ -6,6 +6,7 @@ import TableBar from './TableBar.jsx';
 import Filter from './Filter.jsx';
 import Countries from './Countries.jsx';
 export function Home(props){
+    // console.log(props.dataByName)
     const [sortByName, setSortByName] = useState(true)
     const [sortByPopulation, setSortByPopulation] = useState(true)
     const [difficulty, setDifficulty] = useState({
@@ -27,9 +28,10 @@ export function Home(props){
         Asia:false,
         Europe: false,
         Oceania: false,
+        Antarctica: false,
     });
     const [page, setPage] = useState(0)
-
+    
     function onNext(){
         setPage(prev => prev+1 )
     }
@@ -98,15 +100,17 @@ export function Home(props){
             setcontinent({...continent, Europe:(continent.Europe === false ? cont : false)})
         }else if(cont === 'Oceania'){
             setcontinent({...continent, Oceania:(continent.Oceania === false ? cont : false)})
+        }else if(cont === 'Antarctica'){
+            setcontinent({...continent, Antarctica:(continent.Antarctica === false ? cont : false)})
         }
     }
 // console.log("props: ",props.country)
 
     useEffect(() => {
-        props.filters(difficultyArr, seasonArr, continentArr, sortByName, sortByPopulation)
-    }, [sortByName, sortByPopulation,difficulty, season, continent])
+        props.filters(props.dataByName,difficultyArr, seasonArr, continentArr, sortByName, sortByPopulation)
+    }, [sortByName, sortByPopulation,difficulty, season, continent,props.dataByName])
 
-
+    //console.log(difficultyArr, seasonArr, continentArr, sortByName, sortByPopulation)
     return(
         <div>
             <div className={style.home}>
@@ -122,7 +126,10 @@ export function Home(props){
 
 
 const mapStateToProps = (state) =>  {
+    console.log(state)
     return {
+        
+        dataByName:state.getByName,
         country: state.filter
     }
 }

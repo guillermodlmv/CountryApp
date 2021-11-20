@@ -1,3 +1,8 @@
+.btnDiv{
+    margin-top:20px;
+    border:5px;
+}
+
 .div{
     width: 210px;
     height: 90vh;
@@ -6,6 +11,7 @@
     justify-content: flex-start;
     margin-left:-3.5px;
 }
+
 .filter{
     padding-top:30%;
     width:100%;
@@ -19,18 +25,6 @@
     align-items: center;
     color:white;
     cursor:auto;
-}
-
-.form{
-    display:flex;
-    flex-direction: column;
-    height: 100px;
-
-}
-.subTitle{
-    font-size:20px;
-    margin:8px;
-    font-weight: 650;
 }
 
 .filterBtn{
@@ -49,13 +43,23 @@
     color:#233142;
 }
 
-.btnDiv{
-    margin-top:20px;
-    border:5px;
+.form{
+    display:flex;
+    flex-direction: column;
+    height: 100px;
+
 }
+
 .hideFilters{
     display:none;
 }
-.showFilters{
 
+.subTitle{
+    font-size:20px;
+    margin:8px;
+    font-weight: 650;
 }
+
+
+
+
