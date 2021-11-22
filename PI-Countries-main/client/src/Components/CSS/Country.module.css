@@ -2,7 +2,7 @@
     display: flex;
 }
 .cardsStyle{
-    background-color: #2b4353;
+    background-color: #38598b;
     display:flex;
     flex-direction: column;
     margin-top:10px;
@@ -48,6 +48,11 @@
 .FlagCard{
     width:130px;
 }
+
+.hide{
+    display:none;
+}
+
 .subDiv{
     height: 100%;
     width: 33%;

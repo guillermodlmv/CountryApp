@@ -8,5 +8,7 @@ export const GET_DB = 'GET_DB'
 export const GET_COUNTRIES_NAMES = 'GET_COUNTRIES_NAMES'
 export const SEARCH_STATE = 'SEARCH_STATE'
 export const SWAP_TO_CARDS = 'SWAP_TO_CARDS'
+export const FILTER_STATES = 'FILTER_STATES'
+export const PAGE = 'PAGE'
 
 

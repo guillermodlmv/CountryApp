@@ -26,6 +26,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-start;
+    border: #142d4c 2px solid;
 }
 .countryBtn{
     width:25%;
@@ -68,12 +69,13 @@
     height:32px;
     width:280px;
     border-radius:5px;
+    border: black 2px solid;
 }
 
 .inputClass3{
     height:32px;
     width:256px;
-    border: black 1.5px solid;
+    border: black 1.6px solid;
     border-radius:5px;
 }
 

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 export  function SearchBar(props){
     const[country, setCountry] =useState('')
+    
     useEffect(() =>  {
         props.getByName(country)
     },[onSearch])

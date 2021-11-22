@@ -1,19 +1,19 @@
 import axios from "axios";
-import {GET_COUNTRIES_NAMES, GET_BY_NAME, GET_ALL_ACTIVITIES, GET_BY_ID, FILTER, SEARCH_STATE,SWAP_TO_CARDS} from '../Const/Const';
+import {PAGE, GET_COUNTRIES_NAMES, GET_BY_NAME, GET_ALL_ACTIVITIES, GET_BY_ID, FILTER, SEARCH_STATE,SWAP_TO_CARDS, FILTER_STATES} from '../Const/Const';
 export const filters =  (name, difficulty, season, continent, sortByName, SortByPopulation) => async dispatch =>{
         const url = (name.length > 0) ? `http://localhost:3001/countries/showAll?name=${name}` :'http://localhost:3001/countries/showAll'
         axios.get(url)
         .then(response => {
         const db = response.data
         //**********************FILTER BY DIFFICULTY ***********************/
-        let aux = db.filter(e=> {
-            if(difficulty.length === 0){ //difficUlty =[] O SI NO FILTRAN POR DIFICULTAD
-                return e // REGRESA SIN FILTRAR
-            }else{// SI HAY DIFICULTAD POR FILTRAR
-                for(let i=0; i < difficulty.length; i++) {// RECORREMOS INPUT DE USUARIO DIFFICULTY = [1,2,5]
-                    for(let j=0; j < e.activities.length; j++){//RECORRER NUESTRAS ACTIVIDADES
-                            if(difficulty[i] === parseInt(e.activities[j].difficulty)){ // SI INPUT DE USUARIO ES IGUAL A DIFICULTAD DE DB ACEPTAR EN FILTRO
-                                return e // FILTRO PASADO!
+        let aux = db.filter(e => {
+            if(difficulty === undefined || !difficulty[0]){
+                return e 
+            }else{
+                for(let i=0; i < difficulty.length; i++) {
+                    for(let j=0; j < e.activities.length; j++){
+                            if(difficulty[i] === parseInt(e.activities[j].difficulty)){ 
+                                return e 
                             }
                     }
                 }
@@ -25,7 +25,7 @@ export const filters =  (name, difficulty, season, continent, sortByName, SortBy
         //**********************FILTER BY SEASON ***********************/
         
         let aux2 = aux.filter(e=> {
-            if(season.length === 0){
+            if(season=== undefined || !season[0]){
                 return e
             }else{
                 for(let i=0; i < season.length; i++) {
@@ -41,8 +41,8 @@ export const filters =  (name, difficulty, season, continent, sortByName, SortBy
             aux2 = []
         }
         //**********************FILTER BY CONTINENT ***********************/
-        let aux3 = aux2.filter(e=> {
-            if(continent.length === 0){ 
+        let aux3 = aux2.filter(e => {
+            if(continent === undefined || !continent[0]){ 
                 return e
             }else{              
                 for(let i=0; i < continent.length; i++) {
@@ -122,7 +122,7 @@ export const getCountryNames = () => async (dispatch) => {
                 });           
     dispatch({
         type: GET_COUNTRIES_NAMES,
-        payload: names
+        payload: order
     })
 }
 
@@ -167,16 +167,16 @@ export const createActivity = (details) => {
         if(details.name !== undefined && details.name !== '' && details.countryName.length > 0){
             await axios.post('http://localhost:3001/activities', details)
             alert(`activity ${details.name} created!`)
-        }if(details.countryName.length < 1){
+        }
+        if(details.countryName.length < 1){
             alert('Please insert Country')
         }
-        if(details.duration < 1){
-            alert('Please insert duration')
-        }if(details.name < 1){
-            alert('Please insert Name')
+        if(parseInt(details.duration) < 1){
+            alert('Please insert Duration')
         }
-        
-        
+        if(details.name < 1){
+            alert('Please insert Name')
+        }        
     }
 }
 
@@ -185,5 +185,25 @@ export const swapToCards = (state) =>{
         dispatch({
             type: SWAP_TO_CARDS, 
             payload: state })
+    }
+}
+
+export const filterState = (sortByName, sortByPopulation, difficulty, season, continent) =>{
+
+    return async(dispatch) => {
+        const state ={sortByName, sortByPopulation, difficulty, season, continent}
+        dispatch({
+            type: FILTER_STATES, 
+            payload: state })
+    }
+}
+
+export const pages = (page) =>{
+
+    return async(dispatch) => {
+
+        dispatch({
+            type: PAGE, 
+            payload: page })
     }
 }

@@ -1,4 +1,4 @@
-import {GET_COUNTRIES_NAMES, GET_BY_NAME, GET_BY_ID, GET_ALL_ACTIVITIES, FILTER, SEARCH_STATE,SWAP_TO_CARDS} from '../Const/Const';
+import {PAGE, GET_COUNTRIES_NAMES, GET_BY_NAME, GET_BY_ID, GET_ALL_ACTIVITIES, FILTER, SEARCH_STATE,SWAP_TO_CARDS, FILTER_STATES} from '../Const/Const';
 export const initialState ={
     getByName : [],
     getAll: [],
@@ -7,11 +7,23 @@ export const initialState ={
     filter : [],
     countriesNames: [],
     searchState: [],
-    swapToCards : true
+    swapToCards : true,
+    filterState:true,
+    page:0
 }
 
 const rootReducer = (state = initialState, action) => {
     switch(action.type){
+            case  FILTER_STATES:
+                return {
+                    ...state,
+                    filterState: action.payload
+            }
+            case  PAGE:
+                return {
+                    ...state,
+                    page: action.payload
+            }
             case  GET_BY_NAME:
                 return {
                     ...state,
@@ -42,11 +54,12 @@ const rootReducer = (state = initialState, action) => {
                     ...state,
                     countriesNames : action.payload
                 }
-                case  SWAP_TO_CARDS:
+            case  SWAP_TO_CARDS:
                     return {
                         ...state,
                         swapToCards: action.payload
                 }
+
             default:
             return {
                 ...state

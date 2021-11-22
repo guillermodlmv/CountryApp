@@ -9,7 +9,7 @@ export function NewActivity(props) {
     const [data, setData] = useState({
         activityName : '',
         difficulty : 1,
-        duration:1,
+        duration:0,
         season:'Summer',
         countrie : 'Afghanistan'
     })
@@ -70,7 +70,6 @@ export function NewActivity(props) {
                 <div className={subDiv}>
                     <label for="duration">Activity Duration (Minutes):</label>
                     <input
-                    value={1} 
                     className={inputClass} 
                     type="number" 
                     onChange={e => {setData({...data, duration: e.target.value})}}

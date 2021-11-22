@@ -1,24 +1,119 @@
 import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import style from './CSS/Filter.module.css';
-import {swapToCards} from '../actions/actions.js'
+import {swapToCards, filterState} from '../actions/actions.js'
 
 
-export  function Filter({onSort, onSortByPopulation, handleChangeD, handleChangeS, handleChangeC, dataByName, swapToCards}){
-    let {div, filter, filterBtn, subTitle} = style;
+export  function Filter({ filterState, swapToCards}){
+    let {div, filter, filterBtn, subTitle, btnDiv} = style;
+    
+    const [sortByName, setSortByName] = useState(true)
+    const [cards, setCards] = useState(false)
+    const [sortByPopulation, setSortByPopulation] = useState(true)
+    const [difficulty, setDifficulty] = useState({
+        one: false,
+        two:false,
+        three:false,
+        four: false,
+        five: false,
+    });
+    const [season, setSeason] = useState({
+        Summer:false,
+        Autumn: false,
+        Winter: false,
+        Spring:false,
+    })
+    const [continent, setcontinent] = useState({
+        Africa: false,
+        America:false,
+        Asia:false,
+        Europe: false,
+        Oceania: false,
+        Antarctica: false,
+    });
 
-    const [cards, setCards] = useState(true)
+
+    // console.log(sortName,sortByName )
+    const difficultyArr = Object.values(difficulty).filter(e =>{ 
+        if(!isNaN(e)) return e
+    })
+    const seasonArr = Object.values(season).filter(e =>{ 
+        if(typeof(e) === 'string')return e
+    })
+    const continentArr = Object.values(continent).filter(e =>{ 
+        if(typeof(e) === 'string')return e
+    })
+    
+
 
     useEffect(() => {
         swapToCards(cards)
     }, [cards])
 
+    useEffect(() => {
+        filterState(sortByName, sortByPopulation, difficultyArr, seasonArr,continentArr)
+    }, [sortByName, sortByPopulation, difficulty, season, continent])
+    
     function changeStyle(){
         if(cards === true) {setCards(false)}
         else {setCards(true)}
     }
+    function onSortByName(){
+        sortByName === true ?  setSortByName(false) : setSortByName(() => true)
+    }
+    function onSortByPopulation(){
+        setSortByName(() => null)
+        if(sortByPopulation){
+            setSortByPopulation(() => false)
+            
+        }else{
+            setSortByPopulation(() => true)
+        }
+    }
 
-
+    function handleChangeDifficulty(dif){
+        // setPage(0)
+        if(dif === 1){
+            setDifficulty({...difficulty, one:difficulty.one !== 1 ? 1 : ''})
+        }else if(dif === 2){
+            setDifficulty({...difficulty, two:difficulty.two !== 2 ? 2 : ''})
+        }else if(dif === 3){
+            setDifficulty({...difficulty, three:difficulty.three !== 3 ? 3 : ''})
+        }else if(dif === 4){
+            setDifficulty({...difficulty, four:difficulty.four !== 4 ? 4 : ''})
+        }else if(dif === 5){
+            setDifficulty({...difficulty, five:difficulty.five !== 5 ? 5 : ''})
+        }
+    }
+    function handleChangeSeason(seas){
+        // setPage(0)
+        console.log(seas === 'Summer')
+        if(seas === 'Summer'){
+            setSeason({...season, Summer: (season.Summer === false ? seas : false)})
+        }else if(seas === 'Autumn'){
+            setSeason({...season, Autumn:(season.Autumn === false ? seas : false)})
+        }else if(seas === 'Winter'){
+            setSeason({...season, Winter:(season.Winter === false ? seas : false)})
+        }else if(seas === 'Spring'){
+            setSeason({...season, Spring:(season.Spring === false ? seas : false)})
+        }
+    }
+    function handleChangeContinent(cont){
+        // setPage(0)
+        if(cont === 'Africa'){
+            setcontinent({...continent, Africa: (continent.Africa === false ? cont : false)})
+        }else if(cont === 'America'){
+            setcontinent({...continent, America:(continent.America === false ? cont : false)})
+        }else if(cont === 'Asia'){
+            setcontinent({...continent, Asia:(continent.Asia === false ? cont : false)})
+        }else if(cont === 'Europe'){
+            setcontinent({...continent, Europe:(continent.Europe === false ? cont : false)})
+        }else if(cont === 'Oceania'){
+            setcontinent({...continent, Oceania:(continent.Oceania === false ? cont : false)})
+        }else if(cont === 'Antarctica'){
+            setcontinent({...continent, Antarctica:(continent.Antarctica === false ? cont : false)})
+        }
+    }
     return(
         <div className={div}>
             <div className={filter}>
@@ -31,7 +126,7 @@ export  function Filter({onSort, onSortByPopulation, handleChangeD, handleChange
                             value='1'
                             name="difficulty" 
                             style={{cursor:"pointer"}}
-                            onChange={()=> handleChangeD(1)}
+                            onChange={()=> handleChangeDifficulty(1)}
                             />
                             <span>1</span>
                         </div>
@@ -41,7 +136,7 @@ export  function Filter({onSort, onSortByPopulation, handleChangeD, handleChange
                             value='2'
                             name="difficulty" 
                             style={{cursor:"pointer"}}
-                            onChange={()=> handleChangeD(2)}
+                            onChange={()=> handleChangeDifficulty(2)}
                             />
                             <span>2</span>
                         </div>
@@ -51,7 +146,7 @@ export  function Filter({onSort, onSortByPopulation, handleChangeD, handleChange
                             value='3'
                             name="difficulty" 
                             style={{cursor:"pointer"}}
-                            onChange={()=> handleChangeD(3)}
+                            onChange={()=> handleChangeDifficulty(3)}
                             />
                             <span>3</span>
                         </div>
@@ -61,7 +156,7 @@ export  function Filter({onSort, onSortByPopulation, handleChangeD, handleChange
                             value='4'
                             name="difficulty" 
                             style={{cursor:"pointer"}}
-                            onChange={()=> handleChangeD(4)}
+                            onChange={()=> handleChangeDifficulty(4)}
                             />
                             <span>4</span>
                         </div>
@@ -71,7 +166,7 @@ export  function Filter({onSort, onSortByPopulation, handleChangeD, handleChange
                             value='5'
                             name="difficulty" 
                             style={{cursor:"pointer"}}
-                            onChange={()=> handleChangeD(5)}
+                            onChange={()=> handleChangeDifficulty(5)}
                             />
                             <span>5</span>
                         </div>
@@ -84,7 +179,7 @@ export  function Filter({onSort, onSortByPopulation, handleChangeD, handleChange
                             value='Summer'
                             name="difficulty" 
                             style={{cursor:"pointer"}}
-                            onChange={()=> handleChangeS("Summer")}
+                            onChange={()=> handleChangeSeason("Summer")}
                             />
                             <span>Summer</span>
                         </div>
@@ -94,7 +189,7 @@ export  function Filter({onSort, onSortByPopulation, handleChangeD, handleChange
                             value='Autumn'
                             name="difficulty" 
                             style={{cursor:"pointer"}}
-                            onChange={()=> handleChangeS('Autumn')}
+                            onChange={()=> handleChangeSeason('Autumn')}
                             />
                             <span>Autumn</span>
                         </div>
@@ -104,7 +199,7 @@ export  function Filter({onSort, onSortByPopulation, handleChangeD, handleChange
                             value='Winter'
                             name="difficulty" 
                             style={{cursor:"pointer"}}
-                            onChange={()=> handleChangeS('Winter')}
+                            onChange={()=> handleChangeSeason('Winter')}
                             />
                             <span>Winter</span>
                         </div>
@@ -114,7 +209,7 @@ export  function Filter({onSort, onSortByPopulation, handleChangeD, handleChange
                             value='Spring'
                             name="difficulty" 
                             style={{cursor:"pointer"}}
-                            onChange={()=> handleChangeS('Spring')}
+                            onChange={()=> handleChangeSeason('Spring')}
                             />
                             <span>Spring</span>
                         </div>
@@ -127,7 +222,7 @@ export  function Filter({onSort, onSortByPopulation, handleChangeD, handleChange
                             value='Africa'
                             name="difficulty" 
                             style={{cursor:"pointer"}}
-                            onChange={()=> handleChangeC("Africa")}
+                            onChange={()=> handleChangeContinent("Africa")}
                             />
                             <span>Africa</span>
                         </div>
@@ -137,7 +232,7 @@ export  function Filter({onSort, onSortByPopulation, handleChangeD, handleChange
                             value='America'
                             name="difficulty" 
                             style={{cursor:"pointer"}}
-                            onChange={()=> handleChangeC("America")}
+                            onChange={()=> handleChangeContinent("America")}
                             />
                             <span>America</span>
                         </div>
@@ -147,7 +242,7 @@ export  function Filter({onSort, onSortByPopulation, handleChangeD, handleChange
                             value='Asia'
                             name="difficulty" 
                             style={{cursor:"pointer"}}
-                            onChange={()=> handleChangeC("Asia")}
+                            onChange={()=> handleChangeContinent("Asia")}
                             />
                             <span>Asia</span>
                         </div>
@@ -157,7 +252,7 @@ export  function Filter({onSort, onSortByPopulation, handleChangeD, handleChange
                             value='Europe'
                             name="difficulty" 
                             style={{cursor:"pointer"}}
-                            onChange={()=> handleChangeC("Europe")}
+                            onChange={()=> handleChangeContinent("Europe")}
                             />
                             <span>Europe</span>
                         </div>
@@ -167,7 +262,7 @@ export  function Filter({onSort, onSortByPopulation, handleChangeD, handleChange
                             value='Oceania'
                             name="difficulty" 
                             style={{cursor:"pointer"}}
-                            onChange={()=> handleChangeC("Oceania")}
+                            onChange={()=> handleChangeContinent("Oceania")}
                             />
                             <span>Oceania</span>
                         </div>
@@ -177,24 +272,25 @@ export  function Filter({onSort, onSortByPopulation, handleChangeD, handleChange
                             value='Oceania'
                             name="difficulty" 
                             style={{cursor:"pointer"}}
-                            onChange={()=> handleChangeC("Antarctica")}
+                            onChange={()=> handleChangeContinent("Antarctica")}
                             />
                             <span>Antarctica</span>
                         </div>
                     </form>
                 </div>
-                <input type={'button'} onClick={onSort} className={filterBtn} value={'Sort By Name (A-Z)'} />
-                <input type={'button'} onClick={onSortByPopulation} className={filterBtn} value={'Sort By Lower Population'}/>
-                <input type={'button'} onClick={changeStyle} className={filterBtn} value={'Turn to cards '} />           
+                <div className={btnDiv}>
+                    <input type={'button'} onClick={onSortByName} className={filterBtn} value={sortByName ? 'Sort By Name (Z-A)': 'Sort By Name (A-Z)'}  />
+                    <input type={'button'} onClick={onSortByPopulation} className={filterBtn} value={!sortByPopulation ? 'Sort By Higer Population': 'Sort By Lower Population'}/>
+                    <input type={'button'} onClick={changeStyle} className={filterBtn} value={cards ? 'Turn to rows':'Turn to cards '} /> 
+                </div>          
             </div>
         </div>
     );
 };
 const mapStateToProps = (state) =>  {
     return {
-        dataByName:state.swapToCards,
-
+        sortName: state.filterState,
     }
 }
 
-export default connect(mapStateToProps,{swapToCards})(Filter)
+export default connect(mapStateToProps,{swapToCards, filterState})(Filter)
