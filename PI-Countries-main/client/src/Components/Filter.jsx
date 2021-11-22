@@ -6,10 +6,8 @@ import { Link } from 'react-router-dom';
 
 
 export default function Filter({onSort, onSortByPopulation, handleChangeD, handleChangeS, handleChangeC}){
-    let {div, filter, filterBtn, subTitle, form} = style;
+    let {div, filter, filterBtn, subTitle} = style;
 
-    
-    // console.log(filtered)
     return(
         <div className={div}>
             <div className={filter}>
@@ -174,9 +172,9 @@ export default function Filter({onSort, onSortByPopulation, handleChangeD, handl
                         </div>
                     </form>
                 </div>
-                <button onClick={onSort} className={filterBtn}>Sort By Name (A-Z)</button>
-
-                <button onClick={onSortByPopulation} className={filterBtn}>Sort By Lower Population</button>               
+                <input type={'button'} onClick={onSort} className={filterBtn} value={'Sort By Name (A-Z)'} />
+                <input type={'button'} onClick={onSortByPopulation} className={filterBtn} value={'Sort By Lower Population'}/>
+                <input type={'button'} className={filterBtn} value={'Turn to cards '} />           
             </div>
         </div>
     );

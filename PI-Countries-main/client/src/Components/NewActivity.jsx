@@ -39,7 +39,7 @@ export function NewActivity(props) {
         setCountries([...countries, data.countrie])
         }
     }
-
+    
     let activity = {name: data.activityName, difficulty: data.difficulty, duration: data.duration, season: data.season, countryName: countries.toString()}
 
     return (
@@ -69,7 +69,8 @@ export function NewActivity(props) {
                 </div>
                 <div className={subDiv}>
                     <label for="duration">Activity Duration (Minutes):</label>
-                    <input 
+                    <input
+                    value={1} 
                     className={inputClass} 
                     type="number" 
                     onChange={e => {setData({...data, duration: e.target.value})}}
@@ -118,7 +119,7 @@ export function NewActivity(props) {
                         </div>
                     </div>
                 </div>
-                <input className={btn} onClick={createActivity(activity)} type="button" value="Add Activity" />
+                <input className={btn} onClick={ createActivity(activity)} type="button" value="Add Activity" />
             </form>
         </div>
     );

@@ -2,15 +2,17 @@ import React, { useEffect} from 'react';
 import { connect } from 'react-redux';
 import style from './CSS/CountryDetails.module.css';
 import  { getById } from '../actions/actions.js'
+
 const {bar, CountryDetail, activities, activitiesDiv, spanText,dataDiv } = style
 
 export function CountryDetails(props){
-    // console.log(({match}) => ())
+
     let actualId = window.location.pathname.slice(9)
     useEffect(() => {
         props.getById(actualId)
     },[])
     
+
     return(     
             <div className={ CountryDetail} >
                 {props.byId.getById.map(e => {
@@ -49,16 +51,13 @@ export function CountryDetails(props){
                         </div>
                     )
                 
-                })
-                }
-                
+                })}
             </div>
     );
 };
 
 
 function mapStateToProps(state) {
-    // console.log(state)
     return {
         byId: state
     }

@@ -1,15 +1,12 @@
 import axios from "axios";
 import {GET_COUNTRIES_NAMES, GET_BY_NAME, GET_ALL_ACTIVITIES, GET_BY_ID, FILTER, SEARCH_STATE} from '../Const/Const';
-
-
+//**********************      []
+//                        '',    [a,b,c,d,e,f,g,h,i,j,k,l],          []     []          boolean       boolean
 export const filters =  (name, difficulty, season, continent, sortByName, SortByPopulation) => async dispatch =>{
         const url = (name.length > 0) ? `http://localhost:3001/countries/showAll?name=${name}` :'http://localhost:3001/countries/showAll'
-        console.log(url)
         axios.get(url)
         .then(response => {
         const db = response.data
-        console.log(db)
-        // console.log(db)
         //**********************FILTER BY DIFFICULTY ***********************/
         let aux = db.filter(e=> {
             if(difficulty.length === 0){ 
@@ -104,7 +101,6 @@ export const filters =  (name, difficulty, season, continent, sortByName, SortBy
                         return 0;
                 });
             }
-            console.log(order)
                 dispatch({
                     type:FILTER,
                     payload: order
@@ -169,8 +165,19 @@ export const searchName = (state) => {
 }
 
 export const createActivity = (details) => {
-    return async function(dispatch){
-        const newActivity = await axios.post('http://localhost:3001/activities', details)
-        console.log(newActivity)
+    return async function(){
+        if(details.name !== undefined && details.name !== '' && details.countryName.length > 0){
+            await axios.post('http://localhost:3001/activities', details)
+            alert(`activity ${details.name} created!`)
+        }if(details.countryName.length < 1){
+            alert('Please insert Country')
+        }
+        if(details.duration < 1){
+            alert('Please insert duration')
+        }if(details.name < 1){
+            alert('Please insert Name')
+        }
+        
+        
     }
 }
