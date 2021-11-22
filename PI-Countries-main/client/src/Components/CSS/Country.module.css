@@ -1,6 +1,29 @@
 .btnDiv{
     display: flex;
 }
+.cardsStyle{
+    background-color: #2b4353;
+    display:flex;
+    flex-direction: column;
+    margin-top:10px;
+    margin-bottom:2px;
+    margin-left:10px;
+    width:300px;
+    height:350px;
+    font-size: 10px;
+    align-items: center;
+    border: #142d4c 2px solid;
+    color:white;
+    border-radius: 20px;
+}
+.divCards{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 50px;
+    margin-left: 50px;
+}
 
 .country{
     display:flex;
@@ -22,7 +45,9 @@
     width: 60px;
     height: 40px;  
 }
-
+.FlagCard{
+    width:130px;
+}
 .subDiv{
     height: 100%;
     width: 33%;

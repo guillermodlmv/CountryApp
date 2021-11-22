@@ -1,20 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import {swapToCards} from '../actions/actions.js'
 import style from './CSS/TableBar.module.css';
-// import ordenar from '../img/Ordenar.png';
-// import Filter from './Filter.jsx'
-// import FilterImg from '../img/Filter.png'
-export default function TableBar(){
+
+export function TableBar({cards}){
+    const {hide, bar, topBar, divOrder} = style
     return(
-        <div className={style.bar}>
-            <div className={style.topBar}>
+        <div className={cards ? hide : bar}>
+            <div className={topBar}>
                 
-                <div className={style.divOrder}>
+                <div className={divOrder}>
                     <p>Country flag</p>
                 </div>
-                <div className={style.divOrder}>
+                <div className={divOrder}>
                     <p>Country name</p>
                 </div>
-                <div className={style.divOrder}>
+                <div className={divOrder}>
                     <p>Contentinent</p>
                 </div>
             </div>
@@ -22,3 +23,12 @@ export default function TableBar(){
     );
 };
 
+
+const mapStateToProps = (state) =>  {
+    return {
+        cards:state.swapToCards
+
+    }
+}
+
+export default connect(mapStateToProps,{swapToCards})(TableBar)

@@ -10,7 +10,6 @@ export  function SearchBar(props){
     },[onSearch])
 
     function onSearch(countryByName) {
-        //Llamado a la API del clima
         setCountry(countryByName);
     }
 
@@ -33,7 +32,6 @@ export  function SearchBar(props){
     );
 };
 function mapStateToProps(state) {
-    console.log(state.getByName)
     return{
         countryByName: state.getByName
     }

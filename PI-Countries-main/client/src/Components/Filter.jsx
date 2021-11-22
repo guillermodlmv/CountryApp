@@ -1,12 +1,23 @@
 import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import style from './CSS/Filter.module.css';
-import { allArr } from './constants.js';
-import { Link } from 'react-router-dom';
+import {swapToCards} from '../actions/actions.js'
 
 
-export default function Filter({onSort, onSortByPopulation, handleChangeD, handleChangeS, handleChangeC}){
+export  function Filter({onSort, onSortByPopulation, handleChangeD, handleChangeS, handleChangeC, dataByName, swapToCards}){
     let {div, filter, filterBtn, subTitle} = style;
+
+    const [cards, setCards] = useState(true)
+
+    useEffect(() => {
+        swapToCards(cards)
+    }, [cards])
+
+    function changeStyle(){
+        if(cards === true) {setCards(false)}
+        else {setCards(true)}
+    }
+
 
     return(
         <div className={div}>
@@ -174,9 +185,16 @@ export default function Filter({onSort, onSortByPopulation, handleChangeD, handl
                 </div>
                 <input type={'button'} onClick={onSort} className={filterBtn} value={'Sort By Name (A-Z)'} />
                 <input type={'button'} onClick={onSortByPopulation} className={filterBtn} value={'Sort By Lower Population'}/>
-                <input type={'button'} className={filterBtn} value={'Turn to cards '} />           
+                <input type={'button'} onClick={changeStyle} className={filterBtn} value={'Turn to cards '} />           
             </div>
         </div>
     );
 };
+const mapStateToProps = (state) =>  {
+    return {
+        dataByName:state.swapToCards,
 
+    }
+}
+
+export default connect(mapStateToProps,{swapToCards})(Filter)

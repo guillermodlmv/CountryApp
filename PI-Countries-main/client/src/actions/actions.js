@@ -1,7 +1,5 @@
 import axios from "axios";
-import {GET_COUNTRIES_NAMES, GET_BY_NAME, GET_ALL_ACTIVITIES, GET_BY_ID, FILTER, SEARCH_STATE} from '../Const/Const';
-//**********************      []
-//                        '',    [a,b,c,d,e,f,g,h,i,j,k,l],          []     []          boolean       boolean
+import {GET_COUNTRIES_NAMES, GET_BY_NAME, GET_ALL_ACTIVITIES, GET_BY_ID, FILTER, SEARCH_STATE,SWAP_TO_CARDS} from '../Const/Const';
 export const filters =  (name, difficulty, season, continent, sortByName, SortByPopulation) => async dispatch =>{
         const url = (name.length > 0) ? `http://localhost:3001/countries/showAll?name=${name}` :'http://localhost:3001/countries/showAll'
         axios.get(url)
@@ -9,20 +7,20 @@ export const filters =  (name, difficulty, season, continent, sortByName, SortBy
         const db = response.data
         //**********************FILTER BY DIFFICULTY ***********************/
         let aux = db.filter(e=> {
-            if(difficulty.length === 0){ 
-                return e
-            }else{
-                for(let i=0; i < difficulty.length; i++) {
-                    for(let j=0; j < e.activities.length; j++){
-                            if(difficulty[i] === parseInt(e.activities[j].difficulty)){
-                                return e
+            if(difficulty.length === 0){ //difficUlty =[] O SI NO FILTRAN POR DIFICULTAD
+                return e // REGRESA SIN FILTRAR
+            }else{// SI HAY DIFICULTAD POR FILTRAR
+                for(let i=0; i < difficulty.length; i++) {// RECORREMOS INPUT DE USUARIO DIFFICULTY = [1,2,5]
+                    for(let j=0; j < e.activities.length; j++){//RECORRER NUESTRAS ACTIVIDADES
+                            if(difficulty[i] === parseInt(e.activities[j].difficulty)){ // SI INPUT DE USUARIO ES IGUAL A DIFICULTAD DE DB ACEPTAR EN FILTRO
+                                return e // FILTRO PASADO!
                             }
                     }
                 }
             }
         })
-        if(aux.length === 0){
-            aux = []
+        if(aux.length === 0){// SI YA SE SE RECORRIO PERO NO SE ENCONTRO NADA
+            aux = [] // RETORNA UN ARR VACIO
         }
         //**********************FILTER BY SEASON ***********************/
         
@@ -179,5 +177,13 @@ export const createActivity = (details) => {
         }
         
         
+    }
+}
+
+export const swapToCards = (state) =>{
+    return async(dispatch) => {
+        dispatch({
+            type: SWAP_TO_CARDS, 
+            payload: state })
     }
 }

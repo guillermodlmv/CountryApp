@@ -5,6 +5,7 @@ import  { filters,} from '../actions/actions.js'
 import TableBar from './TableBar.jsx';
 import Filter from './Filter.jsx';
 import Countries from './Countries.jsx';
+
 export function Home(props){
     // console.log(props.dataByName)
     const [sortByName, setSortByName] = useState(true)
@@ -126,7 +127,6 @@ export function Home(props){
 
 
 const mapStateToProps = (state) =>  {
-    console.log(state)
     return {
         
         dataByName:state.getByName,
