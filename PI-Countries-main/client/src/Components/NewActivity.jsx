@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import style from './CSS/NewActivity.module.css';
 import { connect } from 'react-redux';
 import  { getCountryNames, createActivity} from '../actions/actions.js'
-const { div, form, subDiv, inputClass, btn, inputClass2, inputClass3, btnAdd, countriesDiv, countryBtn } = style;
+const { div, form, subDiv, inputClass, btn, inputClass2, inputClass3, btnAdd, countriesDiv, countryBtn,btnBlock } = style;
 
 export function NewActivity(props) {
     const [countries, setCountries] = useState([])
@@ -13,7 +13,8 @@ export function NewActivity(props) {
         season:'Select a Season',
         countrie : 'Select a Country'
     })
-
+    const stateFilled = data.activityName === '' || data.difficulty === 'Select a Difficulty' || data.duration < 1 ||data.season ==='Select a Season' || countries.length < 1
+    console.log(stateFilled)
     useEffect(() =>  {
             props.getCountryNames()
         },[])
@@ -56,13 +57,19 @@ export function NewActivity(props) {
     
 
     function onSubmit(){
-        props.createActivity(
-            {name: data.activityName,
-            difficulty: data.difficulty, 
-            duration: data.duration <1 ? 1: data.duration, 
-            season: data.season, 
-            countryName: countries.toString()})
-        onReset()
+        if(!stateFilled){
+            props.createActivity(
+                {name: data.activityName,
+                difficulty: data.difficulty, 
+                duration: data.duration <1 ? 1: Math.round(data.duration), 
+                season: data.season, 
+                countryName: countries.toString()}
+            )
+        onReset()  
+        }else{
+            alert('Please fill all the fields')
+        }
+        
     }
 
     return (
@@ -71,6 +78,7 @@ export function NewActivity(props) {
                 <div className={subDiv}>
                     <label for="name">Activity Name: </label>
                     <input
+                    placeholder="Insert A Name"
                     value={data.activityName} 
                     className={inputClass} 
                     type="text"
@@ -150,7 +158,11 @@ export function NewActivity(props) {
                         </div>
                     </div>
                 </div>
-                <input className={btn} onClick={onSubmit} type="button" value="Add Activity" />
+                <input className={stateFilled? btnBlock:btn} 
+                onClick={onSubmit} 
+                type="button" 
+                value="Add Activity" 
+                />
                 <input className={btn} onClick={onReset} type="button" value="Reset" />
             </form>
         </div>

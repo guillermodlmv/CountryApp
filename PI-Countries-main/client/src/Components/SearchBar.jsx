@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import style from './CSS/SearchBar.module.css';
-import  {getByName} from '../actions/actions.js'
+import  { getByName } from '../actions/actions.js'
 import { connect } from 'react-redux';
 
-export  function SearchBar(props){
+export  function SearchBar({getByName}){
     const[country, setCountry] =useState('')
     
     useEffect(() =>  {
-        props.getByName(country)
+        getByName(country)
     },[onSearch])
 
     function onSearch(countryByName) {

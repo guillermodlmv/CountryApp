@@ -15,7 +15,16 @@
     color:white;
     cursor:pointer;
 }
+.btnBlock{
+    background-color:grey;
+    color: white;
+    width: 285px;
+    height: 40px;
+    border-radius:5px;
+    cursor: not-allowed;
+    margin:10px;
 
+}
 .countriesDiv{
     margin-top:10px;
     display:flex;
