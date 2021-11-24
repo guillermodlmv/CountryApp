@@ -108,6 +108,7 @@ export const filters =  (name, difficulty, season, continent, sortByName, SortBy
 }
 
 
+
 export const getCountryNames = () => async (dispatch) => {
     const db = await axios.get('http://localhost:3001/countries/showAll')
     const names = db.data.map(e => e.name)

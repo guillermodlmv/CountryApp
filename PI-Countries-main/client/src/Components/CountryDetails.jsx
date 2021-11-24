@@ -36,8 +36,11 @@ export function CountryDetails(props){
                                     <span className={spanText}>Duration</span>
                                     <span className={spanText}>Season</span>
                                 </div>
-                                    {e.activities.map(e =>{
+                                    {
+                                    e.activities.length < 1 ? <div className={activities}>No activities found</div> : 
+                                    e.activities.map(e =>{
                                         const {name, difficulty, duration, season } = e
+
                                         return(
                                             <div className={activities}>
                                                 <span className={spanText}>{name}</span>

@@ -5,12 +5,10 @@ import style from './CSS/Country.module.css';
 import { Link } from 'react-router-dom';
 
 export  function Country({ pages, Name, cards, countries }){
-    // console.log(countries)
     const { country, subDiv, flag, link, cardsStyle,divCards,FlagCard, hide } = style
     return(
         <div  className={cards ? divCards : 0 }>
         {countries.map((e, index) => {
-            console.log(e)
             const {id, imgFlag, name, continent } = e
             if(pages === 0){
                 if(index < 9 ){

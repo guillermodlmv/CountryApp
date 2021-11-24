@@ -21,7 +21,7 @@ export default function Nav(){
                     </Link>
                     <Link to='/NewActivity' style={{ textDecoration: 'none' }}>
                         <p className={style.option}>Add Activity</p>
-                    </Link>  
+                    </Link>    
                 </div>
             </div>
             <SearchBar />

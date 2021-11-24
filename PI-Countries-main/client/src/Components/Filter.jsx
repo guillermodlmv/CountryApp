@@ -5,6 +5,7 @@ import {swapToCards, filterState} from '../actions/actions.js'
 
 
 export  function Filter({ filterState, swapToCards}){
+
     let {div, filter, filterBtn, subTitle, btnDiv} = style;
     
     const [sortByName, setSortByName] = useState(true)
@@ -32,8 +33,6 @@ export  function Filter({ filterState, swapToCards}){
         Antarctica: false,
     });
 
-
-    // console.log(sortName,sortByName )
     const difficultyArr = Object.values(difficulty).filter(e =>{ 
         if(!isNaN(e)) return e
     })
@@ -44,6 +43,7 @@ export  function Filter({ filterState, swapToCards}){
         if(typeof(e) === 'string')return e
     })
     
+
 
 
     useEffect(() => {
@@ -72,7 +72,7 @@ export  function Filter({ filterState, swapToCards}){
     }
 
     function handleChangeDifficulty(dif){
-        // setPage(0)
+        
         if(dif === 1){
             setDifficulty({...difficulty, one:difficulty.one !== 1 ? 1 : ''})
         }else if(dif === 2){
@@ -290,6 +290,8 @@ export  function Filter({ filterState, swapToCards}){
 const mapStateToProps = (state) =>  {
     return {
         sortName: state.filterState,
+        page:state.page,
+
     }
 }
 

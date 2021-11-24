@@ -6,9 +6,15 @@ import Country from './Country.jsx';
 import left from '../img/left.png';
 import right from '../img/Right.png';
 
-export  function Countries({country, cards, pages}){
+export  function Countries({country, cards, pages, filterState}){
     const {noCountrie, btnDiv, btnHide, imgBtn, btn, cardsStyle} = style
     const [page, setPage] = useState(0)   
+    const [aux, setAux] = useState(filterState) //aux to look at a change into the filterState to set page to 0
+    
+    if(aux !== filterState){
+        setPage(0)
+        setAux(filterState)
+    }
     function onNext(){
         setPage(prev => prev+1 )
     }
@@ -18,6 +24,7 @@ export  function Countries({country, cards, pages}){
     useEffect(() => {
         pages(page)
     }, [page])
+
     if(country){
         return(
             <div className={noCountrie} >
@@ -45,11 +52,11 @@ export  function Countries({country, cards, pages}){
 
 
 const mapStateToProps = (state) =>  {
-    console.log(state)
     return {
         cards:state.swapToCards,
         country: state.filter,
-        pages :state.page
+        pages:state.page,
+        filterState:state.filterState
     }
 }
 

@@ -25,7 +25,6 @@ export function Home(props){
 };
 
 const mapStateToProps = (state) =>  {
-    console.log(state)
     return {
         sortByName:state.filterState.sortByName,
         sortByPopulation:state.filterState.sortByPopulation,
