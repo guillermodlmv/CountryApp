@@ -165,19 +165,12 @@ export const searchName = (state) => {
 
 export const createActivity = (details) => {
     return async function(){
-        if(details.name !== undefined && details.name !== '' && details.countryName.length > 0){
+        if(details.name !== undefined && details.name !== '' && details.countryName.length > 0 && details.countryName !== 'Select a Country' && details.difficulty !== 'Select a Difficulty' && details.season !== 'Select a Season'){
             await axios.post('http://localhost:3001/activities', details)
-            alert(`activity ${details.name} created!`)
-        }
-        if(details.countryName.length < 1){
-            alert('Please insert Country')
-        }
-        if(parseInt(details.duration) < 1){
-            alert('Please insert Duration')
-        }
-        if(details.name < 1){
-            alert('Please insert Name')
-        }        
+            alert(`Activity ${details.name} created!`)
+        }else{
+            alert('Please fill all the fields')
+        }      
     }
 }
 

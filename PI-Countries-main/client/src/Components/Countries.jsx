@@ -36,8 +36,8 @@ export  function Countries({country, cards, pages, filterState}){
                         <img  className={page === 0 ? btnHide :imgBtn} src={left} alt='left'/>
                     </button>
                         <h4>Page {page +1}</h4>
-                    <button className={page < Math.floor(country.length / 9) ? btn  : btnHide} onClick={onNext}>
-                        <img className={page < Math.floor(country.length / 9) ? imgBtn : btnHide } src={right} alt='left'/>
+                    <button className={page < Math.floor(country.length / 10) ? btn  : btnHide} onClick={onNext}>
+                        <img className={page < Math.floor(country.length / 10) ? imgBtn : btnHide } src={right} alt='left'/>
                     </button>
                 </div>
                 

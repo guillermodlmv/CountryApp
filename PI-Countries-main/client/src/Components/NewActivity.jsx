@@ -8,15 +8,27 @@ export function NewActivity(props) {
     const [countries, setCountries] = useState([])
     const [data, setData] = useState({
         activityName : '',
-        difficulty : 1,
-        duration:0,
-        season:'Summer',
-        countrie : 'Afghanistan'
+        difficulty : 'Select a Difficulty',
+        duration:1,
+        season:'Select a Season',
+        countrie : 'Select a Country'
     })
 
     useEffect(() =>  {
             props.getCountryNames()
         },[])
+        
+
+    function onReset(){
+        setData({
+            activityName : '',
+            difficulty : 'Select a Difficulty',
+            duration:1,
+            season:'Select a Season',
+            countrie : 'Select a Country'
+        })
+        setCountries([])
+    }
     function changeSeason(event){
         setData({...data, season: event.target.value})
     }
@@ -35,19 +47,31 @@ export function NewActivity(props) {
     }
 
     function onClick(){
-        if(countries.indexOf(data.countrie) === -1){
+        if(countries.indexOf(data.countrie) === -1 && data.countrie !== 'Select a Country'){
         setCountries([...countries, data.countrie])
+        setData({...data, countrie : 'Select a Country'})
         }
+        setData({...data, countrie : 'Select a Country'})
     }
     
-    let activity = {name: data.activityName, difficulty: data.difficulty, duration: data.duration, season: data.season, countryName: countries.toString()}
+
+    function onSubmit(){
+        props.createActivity(
+            {name: data.activityName,
+            difficulty: data.difficulty, 
+            duration: data.duration <1 ? 1: data.duration, 
+            season: data.season, 
+            countryName: countries.toString()})
+        onReset()
+    }
 
     return (
         <div className={div}  >
             <form className={form}>
                 <div className={subDiv}>
                     <label for="name">Activity Name: </label>
-                    <input 
+                    <input
+                    value={data.activityName} 
                     className={inputClass} 
                     type="text"
                     onChange={e => {setData({...data, activityName: e.target.value})}} 
@@ -55,11 +79,13 @@ export function NewActivity(props) {
                 </div>
                 <div className={subDiv}>
                     <label for="difficulty">Difficulty: </label>
-                    <select 
+                    <select
+                    value={data.difficulty} 
                     className={inputClass2} 
                     name="difficulty"
                     onChange={changeDifficulty}
                     >
+                        <option>Select a Difficulty</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -71,17 +97,19 @@ export function NewActivity(props) {
                     <label for="duration">Activity Duration (Minutes):</label>
                     <input
                     className={inputClass} 
-                    type="number" 
+                    type="number"
+                    value={data.duration} 
                     onChange={e => {setData({...data, duration: e.target.value})}}
                     />
                 </div>
                 <div className={subDiv}>
                 <label for="season">Season: </label>
-                    <select 
+                    <select
+                    value={data.season} 
                     className={inputClass2} 
                     name="season"
                     onChange={changeSeason}
-                    >
+                    >   <option>Select a Season</option>
                         <option>Summer</option>
                         <option>Autumn</option>
                         <option>Winter</option>
@@ -90,12 +118,14 @@ export function NewActivity(props) {
                 </div>
                 <div>
                     <div className={subDiv}>
-                        <label for="name">Select Countries:</label>
+                        <label for="countries">Select Countries:</label>
                         <div>
                             <select 
                             className={inputClass3}
                             onChange={changeCountry}
+                            value={data.countrie}
                             >
+                            <option>Select a Country</option>
                             {props.names.map(e => {
                                 return (<option>{e}</option>)
                             })
@@ -109,7 +139,9 @@ export function NewActivity(props) {
                             />
                         </div>
                         <div className={countriesDiv}>
-                            {countries.map(e => {
+
+                            {
+                            countries.map(e => {
                                 return(
                                 <input type="button" value={e} className={countryBtn} onClick={onClose} />
                                 )
@@ -118,7 +150,8 @@ export function NewActivity(props) {
                         </div>
                     </div>
                 </div>
-                <input className={btn} onClick={ createActivity(activity)} type="button" value="Add Activity" />
+                <input className={btn} onClick={onSubmit} type="button" value="Add Activity" />
+                <input className={btn} onClick={onReset} type="button" value="Reset" />
             </form>
         </div>
     );
@@ -129,4 +162,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {getCountryNames})(NewActivity)
+export default connect(mapStateToProps, {getCountryNames, createActivity})(NewActivity)
